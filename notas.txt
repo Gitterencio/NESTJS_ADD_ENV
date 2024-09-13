@@ -1,0 +1,31 @@
+MOVE TO  SRC
+COMMON
+ENV/SQL
+npm i --save @nestjs/config
+npm i --save-dev @types/node
+
+mkdir src/common
+mkdir src/common/sql
+touch src/common/sql/index.sql
+touch src/common/sql/default.sql
+
+mkdir src/common/envs
+mkdir src/common/helper
+
+
+touch src/common/helper/env.helper.ts
+AGREGAR
+
+
+app.module.ts
+
+const envFilePath: string = getEnvPath(`${__dirname}/common/envs`);
+
+@Module({
+  imports: [  ConfigModule.forRoot({ envFilePath, isGlobal: true })],
+
+nest-cli.json
+ "compilerOptions": {
+    "deleteOutDir": true,
+        "assets": ["common/*/*"]
+  }
